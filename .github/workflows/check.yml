@@ -11,7 +11,10 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/core.test.mjs
+      - run: python3 tests/wps_overlay.py
       - run: |
           node --check genoffice-official-typeset/scripts/format-official.mjs
+          node --check genoffice-official-typeset/scripts/format-wps-body.mjs
+          python3 -m py_compile genoffice-official-typeset/scripts/apply-wps-body.py genoffice-official-typeset/scripts/apply-genoffice-compat.py
           node --check genoffice-official-typeset/scripts/genoffice-bridge.cjs
           node --check genoffice-official-typeset/scripts/runtime.cjs

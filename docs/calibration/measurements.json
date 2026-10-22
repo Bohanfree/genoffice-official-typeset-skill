@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-22",
+  "wpsVersion": "12.1.28496",
+  "genofficeVersion": "0.11.919",
+  "template": "公文主体",
+  "imageSize": [
+    849,
+    1200
+  ],
+  "single": {
+    "wpsPages": 1,
+    "genofficePages": 1,
+    "textRows": 14,
+    "matchingLineBreaks": true,
+    "maxInkTopDifferencePx": 2,
+    "dateLeftInkDifferencePx": 4
+  },
+  "multi": {
+    "wpsPages": 7,
+    "genofficePages": 7,
+    "rowsPerPage": [
+      20,
+      22,
+      21,
+      21,
+      22,
+      21,
+      17
+    ],
+    "matchingLineBreaks": true,
+    "comparison": "Vision OCR with source and visual review of OCR substitutions",
+    "sampleFooterInkBounds": {
+      "page1": {
+        "wps": [
+          662,
+          1081,
+          720,
+          1094
+        ],
+        "genoffice": [
+          662,
+          1082,
+          719,
+          1094
+        ]
+      },
+      "page2": {
+        "wps": [
+          136,
+          1081,
+          194,
+          1093
+        ],
+        "genoffice": [
+          136,
+          1081,
+          193,
+          1094
+        ]
+      },
+      "page7": {
+        "wps": [
+          662,
+          1081,
+          720,
+          1094
+        ],
+        "genoffice": [
+          662,
+          1081,
+          719,
+          1094
+        ]
+      }
+    }
+  },
+  "artifacts": {
+    "multi-1-wps.png": "a5335cefc9ff2fcd33dd26bfa452f34b5c47f0e8dd3399be8a72936431a8fdeb",
+    "single-wps.png": "3f28f25fe6ba41a4025d2eae856e861c744ddbba3228b43bf6b98021c371566f",
+    "multi-7-genoffice.png": "e87f07929ec0eee7a4db147c56392819c04b26d02297f65a0ce13d8b0a3a0bf0",
+    "multi-2-wps.png": "f61362fc74c0a0d90ad8fc48718f45d80f5be079da045fbce93e90e63e7d22bf",
+    "multi-1-genoffice.png": "c40b3706e2dcf9bdc26046e7327c99b7cd5f1d52f94a282858ccc14f7d305ea9",
+    "multi-7-wps.png": "7fba9f68c4ef9830b53a9f8845ceb2324f1903a3a76cf89d32ebc69623edb117",
+    "single-comparison.png": "1548ca56264745851a84120a8f883e0b55245a502918ae844289efed421e992e",
+    "multi-2-genoffice.png": "aa8bf45f48afd51a5d3fdced7233b9dd7a7b7650cc2843de1d45c4b4e8b9d061",
+    "multi-2-comparison.png": "d09aea77d49fd5d3b8b9ef0388339d01e7fe89ec5a311f237762a3010b54f958",
+    "multi-7-comparison.png": "9b42983c5bda085c598aacf388aa379aa5888b4eee40eadfb55052a0bca3873a",
+    "multi-1-comparison.png": "e5e5555246efecec29f51e9785b725f4fb4bf70c51c01d5d8fd6b09d4f77e069",
+    "single-genoffice.png": "20eb0fd6dafeed31140ef0d66880b86916e1b635b7872cab7928c04169879c00"
+  }
+}
