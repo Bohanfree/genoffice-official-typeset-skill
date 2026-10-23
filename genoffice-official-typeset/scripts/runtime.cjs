@@ -5,6 +5,10 @@ const os = require('node:os');
 const crypto = require('node:crypto');
 const {spawnSync} = require('node:child_process');
 const VERIFIED_SHA256 = 'db833cd5f39362a15e983d248b53155cc63eb82ee69f798827bdd4eaa60a86c0';
+const VERIFIED_VERSIONS = Object.freeze({
+  [VERIFIED_SHA256]: '0.11.919',
+  '836aec07fb449d78c606a394ba503dc04ac6824e49436ca48d9f46c26004bef4': '0.12.29'
+});
 
 function resolveRuntime(env = process.env) {
   if (process.platform !== 'darwin') throw new Error('本版本支持 macOS；Windows / Linux 适配尚未验证。');
@@ -12,11 +16,12 @@ function resolveRuntime(env = process.env) {
   const runtime = env.GENOFFICE_RUNTIME || (app && path.join(app, 'Contents/MacOS/GenOffice'));
   const bundle = env.GENOFFICE_CLI || (app && path.join(app, 'Contents/Resources/cli/genoffice.cjs'));
   if (!runtime || !bundle || !fs.existsSync(runtime) || !fs.existsSync(bundle)) {
-    throw new Error('未找到 GenOffice。请安装 0.11.919，或用 GENOFFICE_APP 指定 .app 路径；也可同时指定 GENOFFICE_RUNTIME 和 GENOFFICE_CLI。');
+    throw new Error('未找到 GenOffice。请安装 0.11.919 或 0.12.29，或用 GENOFFICE_APP 指定 .app 路径；也可同时指定 GENOFFICE_RUNTIME 和 GENOFFICE_CLI。');
   }
   const sha256 = crypto.createHash('sha256').update(fs.readFileSync(bundle)).digest('hex');
-  if (sha256 !== VERIFIED_SHA256) throw new Error('GenOffice CLI 版本与已验证的 0.11.919 不匹配。请先复核桥接器兼容性；不要仅替换校验值。');
-  return {runtime: path.resolve(runtime), bundle: path.resolve(bundle), sha256};
+  const version = VERIFIED_VERSIONS[sha256];
+  if (!version) throw new Error('GenOffice CLI 版本与已适配的 0.11.919、0.12.29 不匹配。请先复核桥接器兼容性；不要仅替换校验值。');
+  return {runtime: path.resolve(runtime), bundle: path.resolve(bundle), sha256, version};
 }
 
 function inventory() {
@@ -43,4 +48,4 @@ function inventory() {
   throw new Error('读取本机字体失败。请检查 macOS 字体册或 Command Line Tools 后重试。');
 }
 
-module.exports = {resolveRuntime, inventory, VERIFIED_SHA256};
+module.exports = {resolveRuntime, inventory, VERIFIED_SHA256, VERIFIED_VERSIONS};

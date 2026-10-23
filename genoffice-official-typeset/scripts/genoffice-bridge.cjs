@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Extend the installed CLI in this process only. The app bundle remains unchanged.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),Module=require('node:module');
-const {resolveRuntime,VERIFIED_SHA256}=require('./runtime.cjs');
-const CLI=resolveRuntime().bundle;
+const {resolveRuntime}=require('./runtime.cjs');
+const runtime=resolveRuntime(),CLI=runtime.bundle;
 (async()=>{
   const {validateOfficialAttrs}=await import('./official-typeset-core.mjs');
   let source=fs.readFileSync(CLI,'utf8');
-  if(crypto.createHash('sha256').update(source).digest('hex')!==VERIFIED_SHA256)throw new Error('GenOffice CLI 已更新。请先复核公文排版适配，再运行本技能。');
+  if(crypto.createHash('sha256').update(source).digest('hex')!==runtime.sha256)throw new Error('GenOffice CLI 已更新。请先复核公文排版适配，再运行本技能。');
   const anchor='    register({\n      name: "setParagraphAttrs",';
   if(source.split(anchor).length!==2)throw new Error('GenOffice 排版接口不匹配');
   const registration=`register({

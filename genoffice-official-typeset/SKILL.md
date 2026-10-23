@@ -5,7 +5,7 @@ description: 用本机 GenOffice 按 WPS 实测公文主体模板排版未排版
 
 # 公文排版
 
-推荐使用随附的 WPS「公文主体」实测模式，当前为校准测试版；单页与七页固定样稿已完成同文对照，结果见 [校准记录](references/wps-body-calibration.md)。依赖 macOS、Node.js 18+、Python 3、GenOffice 0.11.919 和所需字体。无需修改应用、启动 WPS 或调用外部 AI API。
+推荐使用随附的 WPS「公文主体」实测模式，当前为校准测试版；单页与七页固定样稿已完成同文对照，结果见 [校准记录](references/wps-body-calibration.md)。依赖 macOS、Node.js 18+、Python 3、GenOffice 0.11.919 或 0.12.29 和所需字体。无需修改应用、启动 WPS 或调用外部 AI API。
 
 ## 执行
 

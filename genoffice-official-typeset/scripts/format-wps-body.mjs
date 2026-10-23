@@ -2,7 +2,6 @@
 // Use the installed GenOffice engine, then carry measured WPS OOXML formatting.
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
@@ -64,7 +63,8 @@ function main(){
   for(const p of [opts.out,planPath,reportPath,...opts.render?[previewPath]:[]])if(fs.existsSync(p))throw new Error('为保留已有文件，请更换输出名称：'+p);
   if(opts.render&&missingFonts.length)throw new Error('WPS 同字体渲染缺少字体：'+missingFonts.join('、')+'。请把合法取得的原字体或 WPS 实际别名字体安装到系统字体目录后重试；DOCX 可省略 --render 先生成，文件保留 WPS 原字体名。');
   fs.mkdirSync(path.dirname(opts.out),{recursive:true});
-  const work=fs.mkdtempSync(path.join(os.tmpdir(),'wps body skill '));
+  // Keep the temporary package on the destination volume for atomic delivery.
+  const work=fs.mkdtempSync(path.join(path.dirname(opts.out),'.official-typeset-wps-'));
   const sourceHash=hash(opts.input),engineHash=hash(runtime.bundle);
   try{
     const prepared=path.join(work,'prepared.docx');

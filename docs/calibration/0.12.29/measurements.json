@@ -1,0 +1,410 @@
+{
+  "single": {
+    "pages": 1,
+    "comparisons": {
+      "1": {
+        "differenceFromOldGenofficeBounds": [
+          495,
+          750,
+          723,
+          1098
+        ],
+        "bodyDifferenceBounds": [
+          495,
+          750,
+          656,
+          777
+        ],
+        "footerInkBounds": [
+          552,
+          30,
+          610,
+          43
+        ],
+        "textRowBounds": [
+          [
+            165,
+            194
+          ],
+          [
+            235,
+            255
+          ],
+          [
+            274,
+            295
+          ],
+          [
+            315,
+            336
+          ],
+          [
+            355,
+            375
+          ],
+          [
+            395,
+            415
+          ],
+          [
+            434,
+            455
+          ],
+          [
+            474,
+            494
+          ],
+          [
+            513,
+            534
+          ],
+          [
+            554,
+            575
+          ],
+          [
+            594,
+            614
+          ],
+          [
+            673,
+            693
+          ],
+          [
+            714,
+            734
+          ],
+          [
+            753,
+            773
+          ]
+        ]
+      }
+    }
+  },
+  "multi": {
+    "pages": 7,
+    "comparisons": {
+      "1": {
+        "differenceFromOldGenofficeBounds": [
+          659,
+          1077,
+          723,
+          1098
+        ],
+        "bodyDifferenceBounds": null,
+        "footerInkBounds": [
+          552,
+          30,
+          610,
+          43
+        ],
+        "textRowBounds": [
+          [
+            165,
+            194
+          ],
+          [
+            235,
+            255
+          ],
+          [
+            274,
+            294
+          ],
+          [
+            315,
+            336
+          ],
+          [
+            356,
+            376
+          ],
+          [
+            394,
+            414
+          ],
+          [
+            434,
+            455
+          ],
+          [
+            474,
+            495
+          ],
+          [
+            513,
+            534
+          ],
+          [
+            553,
+            574
+          ],
+          [
+            594,
+            614
+          ],
+          [
+            633,
+            653
+          ],
+          [
+            673,
+            694
+          ],
+          [
+            714,
+            734
+          ],
+          [
+            753,
+            773
+          ],
+          [
+            793,
+            813
+          ],
+          [
+            833,
+            854
+          ],
+          [
+            873,
+            893
+          ],
+          [
+            912,
+            933
+          ],
+          [
+            953,
+            974
+          ]
+        ]
+      },
+      "2": {
+        "differenceFromOldGenofficeBounds": [
+          133,
+          1077,
+          197,
+          1098
+        ],
+        "bodyDifferenceBounds": null,
+        "footerInkBounds": [
+          26,
+          30,
+          84,
+          43
+        ],
+        "textRowBounds": [
+          [
+            162,
+            183
+          ],
+          [
+            201,
+            222
+          ],
+          [
+            242,
+            262
+          ],
+          [
+            282,
+            302
+          ],
+          [
+            321,
+            341
+          ],
+          [
+            362,
+            382
+          ],
+          [
+            401,
+            422
+          ],
+          [
+            441,
+            461
+          ],
+          [
+            481,
+            502
+          ],
+          [
+            521,
+            542
+          ],
+          [
+            560,
+            581
+          ],
+          [
+            600,
+            621
+          ],
+          [
+            641,
+            661
+          ],
+          [
+            680,
+            701
+          ],
+          [
+            720,
+            741
+          ],
+          [
+            761,
+            781
+          ],
+          [
+            800,
+            820
+          ],
+          [
+            840,
+            860
+          ],
+          [
+            880,
+            901
+          ],
+          [
+            920,
+            940
+          ],
+          [
+            959,
+            980
+          ],
+          [
+            1000,
+            1020
+          ]
+        ]
+      },
+      "7": {
+        "differenceFromOldGenofficeBounds": [
+          495,
+          837,
+          723,
+          1098
+        ],
+        "bodyDifferenceBounds": [
+          495,
+          837,
+          656,
+          864
+        ],
+        "footerInkBounds": [
+          552,
+          30,
+          610,
+          43
+        ],
+        "textRowBounds": [
+          [
+            162,
+            183
+          ],
+          [
+            201,
+            222
+          ],
+          [
+            242,
+            262
+          ],
+          [
+            282,
+            302
+          ],
+          [
+            321,
+            341
+          ],
+          [
+            362,
+            382
+          ],
+          [
+            401,
+            422
+          ],
+          [
+            441,
+            461
+          ],
+          [
+            481,
+            502
+          ],
+          [
+            521,
+            542
+          ],
+          [
+            560,
+            581
+          ],
+          [
+            600,
+            621
+          ],
+          [
+            642,
+            662
+          ],
+          [
+            680,
+            701
+          ],
+          [
+            761,
+            781
+          ],
+          [
+            800,
+            820
+          ],
+          [
+            840,
+            860
+          ]
+        ]
+      }
+    },
+    "rowsPerPage": [
+      20,
+      22,
+      21,
+      21,
+      22,
+      21,
+      17
+    ]
+  },
+  "date": "2026-10-23",
+  "genofficeVersion": "0.12.29",
+  "wpsVersion": "12.1.28496",
+  "template": "公文主体",
+  "imageSize": [
+    849,
+    1200
+  ],
+  "comparison": "New final-DOCX renders compared with retained WPS images and previous calibrated GenOffice images. All body pixels match on sampled pages except date and footer glyphs.",
+  "artifacts": {
+    "multi-7-genoffice.png": "f72d2151ef8c9ae464d85fc518e4121fdac1979d23faa3801fe512550411243c",
+    "multi-1-genoffice.png": "020fe01e0e1a013165833d7cd02d39d65464cccc9d11ad95cf46f6bd14a0aa54",
+    "single-comparison.png": "110bcb1ee51faf90899413f5733ebc9e0b3e7e98358d94e29e5dfff1ac5db2d8",
+    "multi-2-genoffice.png": "df46f4b435fdd5e0ba3170570fa51136c7a82ff2519ba3128113489856d464d5",
+    "multi-2-comparison.png": "740ed9e77e9261801cddb4c4f82620a760d5b6db9b32bd7acf3922774e5c148d",
+    "multi-7-comparison.png": "9b137d7fa33e3aa27874ceaaca32d33ae7a692a9b246f31a0c977a9160c08f95",
+    "multi-1-comparison.png": "890729159abd0b8cccd143d5a7a990ef3ef5db7c341fb18d973dc72084e1e5c3",
+    "single-genoffice.png": "e2dbe90f994016f08afa3218d3fdcec139c96627a4cabd07a1969ee9be4f1989"
+  }
+}

@@ -52,7 +52,8 @@ def check_layout(p):
 
 
 def main():
-    with tempfile.TemporaryDirectory(prefix='official skill tests ') as tmp:
+    # Set OFFICIAL_TEST_ROOT to an external volume to exercise cross-volume delivery.
+    with tempfile.TemporaryDirectory(prefix='official skill tests ', dir=os.environ.get('OFFICIAL_TEST_ROOT')) as tmp:
         work = Path(tmp)
         skill = work / 'Claude WorkBuddy skills' / 'genoffice-official-typeset'
         shutil.copytree(ROOT / 'genoffice-official-typeset', skill)
@@ -76,6 +77,23 @@ def main():
         assert lines == text.split('\n'), lines
         assert list(Path(result['preview']).rglob('*.png'))
         check_layout(output)
+        measured_script = skill / 'scripts' / 'format-wps-body.mjs'
+        measured = work / 'WPS 主体 输出.docx'
+        measured_result = run(['node', measured_script, source, '--out', measured, '--render'])
+        measured_report = json.loads(Path(measured_result['report']).read_text())
+        assert measured_report['textPreserved'] and measured_report['sourceUnchanged'] and measured_report['appFilesUnchanged']
+        measured_doc, measured_parts = read_doc(measured)
+        measured_lines = [''.join(t.text or '' for t in p.findall('.//w:t', NS)) for p in measured_doc.findall('w:body/w:p', NS)]
+        assert [line for line in measured_lines if line] == [line for line in text.split('\n') if line]
+        assert len(measured_lines) == len(text.split('\n')) + measured_report['addedLayoutBlankParagraphs']
+        assert measured_doc.find('.//w:sectPr/w:pgMar', NS).get(W+'top') == '2098'
+        assert measured_doc.find('w:body/w:p/w:pPr/w:spacing', NS).get(W+'line') == '720'
+        assert list(Path(measured_result['preview']).rglob('*.png'))
+        assert b' PAGE ' in measured_parts['word/officialWpsFooterOdd.xml']
+        assert b' PAGE ' in measured_parts['word/officialWpsFooterEven.xml']
+        measured_hash = sha(measured)
+        run(['node', measured_script, source, '--out', measured], fail=True)
+        assert sha(measured) == measured_hash
         output_hash = sha(output)
         run(['node', script, source, '--out', output], fail=True)
         assert sha(output) == output_hash and sha(source) == source_hash
@@ -106,7 +124,7 @@ def main():
         assert '未安装指定字体' in failure.stderr
         assert not (work/'missing font.docx').exists()
         assert sha(Path(engine['bundle'])) == bundle_hash
-        print('PASS: copied skill path with spaces; literal text, blanks and spaces; render; exact line height and font sizes; page margins; native numbering and table; no overwrite; missing font and incompatible version stop; input and engine unchanged.')
+        print('PASS: copied skill path with spaces; literal text, blanks and spaces; simple and measured-WPS render; exact line height and font sizes; page margins; dynamic odd/even page fields; native numbering and table; no overwrite; missing font and incompatible version stop; input and engine unchanged.')
 
 
 if __name__ == '__main__':

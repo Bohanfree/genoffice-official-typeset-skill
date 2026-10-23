@@ -2,8 +2,8 @@
 
 ## 依赖
 
-- macOS；已在 GenOffice 0.11.919、Node.js 22 上运行回归。脚本使用 Node.js 18+ 内置模块，无 npm 依赖。
-- 用户自行安装的 GenOffice 0.11.919。技能不附带 GenOffice、WPS 或字体。
+- macOS；已在 GenOffice 0.11.919、0.12.29 上运行回归。脚本使用 Node.js 18+ 内置模块，无 npm 依赖。
+- 用户自行安装的 GenOffice 0.11.919 或 0.12.29。技能不附带 GenOffice、WPS 或字体。
 - WPS 实测模式所需字族见 [字体映射](wps-body-calibration.md)。字体由用户合法安装。
 - 字体检测优先 CoreText/Swift，未配置 Swift 时回退到系统 `system_profiler`。
 - Python 3 用于 WPS 实测模式的 OOXML 处理，仅使用标准库，无需安装第三方包。
@@ -24,10 +24,11 @@ GENOFFICE_APP="/其他位置/GenOffice.app" node "<技能目录>/scripts/format-
 
 桥接器运行用户安装的引擎，在单独进程内注册经过校验的段落操作并补足固定行距导出。应用文件保持原样。
 
-本版本要求 CLI SHA-256：
+按 CLI SHA-256 精确识别已验证版本，`--doctor` 返回所匹配的 `version`：
 
 ```
-db833cd5f39362a15e983d248b53155cc63eb82ee69f798827bdd4eaa60a86c0
+0.11.919: db833cd5f39362a15e983d248b53155cc63eb82ee69f798827bdd4eaa60a86c0
+0.12.29: 836aec07fb449d78c606a394ba503dc04ac6824e49436ca48d9f46c26004bef4
 ```
 
 升级后校验失败应重新核对接口、文档导出与保真测试，再更新适配。不要只修改校验值。

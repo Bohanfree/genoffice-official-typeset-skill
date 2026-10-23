@@ -1,6 +1,6 @@
 # 公文排版 Skill
 
-**当前为 v1.1.0-beta.1 实测校准版**：WPS「公文主体」规则已提取；视觉差异与对照图见 [验收记录](docs/wps-calibration.md)。
+**当前为 v1.1.0-beta.2 实测校准版**：WPS「公文主体」规则已提取，新增 GenOffice 0.12.29 适配；视觉差异与对照图见 [验收记录](docs/wps-calibration.md)。
 
 给 **Claude Code、WorkBuddy** 使用的独立技能：把未排版文章或现有 Word 文档排成可编辑的中文公文，保留原文并附排版方案、核验结果和预览。
 
@@ -8,13 +8,13 @@
 
 ## 运行条件
 
-**macOS + Node.js 18+ + Python 3 + GenOffice 0.11.919**。无需 npm 包、Python 第三方包或 API Key。日常排版无需启动 WPS；GenOffice 和字体由使用者自行安装。
+**macOS + Node.js 18+ + Python 3 + GenOffice 0.11.919 或 0.12.29**。无需 npm 包、Python 第三方包或 API Key。日常排版无需启动 WPS；GenOffice 和字体由使用者自行安装。
 
 这是依赖本地文档引擎的技能，适用于能执行本地命令的 Claude Code、WorkBuddy。Claude 网页远程环境无法直接调用本机 GenOffice。本次发行的引擎适配已在 macOS 验证。
 
 ## 安装
 
-下载 [实测校准版发布包](https://github.com/Bohanfree/genoffice-official-typeset-skill/releases/tag/v1.1.0-beta.1)，解压后将整个 `genoffice-official-typeset` 文件夹放入对应客户端的 skills 目录，保留内部的 scripts、references、assets、examples。
+下载 [实测校准版发布包](https://github.com/Bohanfree/genoffice-official-typeset-skill/releases/tag/v1.1.0-beta.2)，解压后将整个 `genoffice-official-typeset` 文件夹放入对应客户端的 skills 目录，保留内部的 scripts、references、assets、examples。
 
 | 客户端 | 安装位置 |
 |---|---|
@@ -108,6 +108,8 @@ python3 tests/wps_overlay.py
 ```
 
 集成测试需要上述本机依赖与 Python 3，使用虚构样例，覆盖含空格的技能路径、逐字保留、DOCX 表格与编号、固定行距、禁止覆盖及版本不匹配的停止行为。所有测试产物位于系统临时目录。
+
+设置 `OFFICIAL_TEST_ROOT` 可将集成测试临时目录放在指定磁盘，以检查保存到外置硬盘的行为。WPS 实测模式也覆盖原文保留、实际渲染、模板空段和动态奇偶页码。
 
 ## 授权与数据
 
